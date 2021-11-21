@@ -68,7 +68,7 @@ class UserLinksView(LoginRequiredMixin, ListView):
     template_name = 'user_links_list.html'   
 
     def get_queryset(self):
-        return self.model.objects.filter(user=self.request.user).order_by('-pk')
+        return self.model.objects.filter(user=self.request.user).order_by('-pk')  #fetching the objects of class url where user is user
 
 
 class UserLinkDetailView(UserLinkRequiredMixin, DetailView):
@@ -96,5 +96,5 @@ class UserLinkDetailView(UserLinkRequiredMixin, DetailView):
                 url__short_url=self.kwargs['url'],
                 date__gte=date-timedelta(days=day),
                 date__lte=date-timedelta(days=day-1)).count()
-            data[(date-timedelta(days=day)).strftime("%d/%m")] = count
+            data[(date-timedelta(days=day)).strftime("%d/%m")] = count  #dict mapping date with click count
         return json.dumps(data)

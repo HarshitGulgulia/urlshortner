@@ -17,8 +17,8 @@ class Url(models.Model):
 
 
 class Click(models.Model):
-    url = models.ForeignKey(Url, on_delete=models.CASCADE)
-    date = models.DateTimeField(default=timezone.now)
+    url = models.ForeignKey(Url, on_delete=models.CASCADE)  #url 
+    date = models.DateTimeField(default=timezone.now)  #timestamp on url
 
     def __str__(self):
         return 'Click on {}'.format(self.date.strftime("%b %d %Y %H:%M:%S"))
