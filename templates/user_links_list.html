@@ -2,10 +2,13 @@
 
 {% block content %}
     <div id="wrapper">
-        <p class="menu">
+        <div class="menu">
+            <div class=logo><h1>code-HAK</h1></div>
+        <div class=pages>
             <a class="btn btn-primary" href="{% url 'main' %}">Main</a>
             <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
-        </p>
+        </div>
+    </div>
         <div class="container-fluid" style="padding: 35px;">
             <h3>Your links</h3>
             <div class="card" style="width: 100%">
