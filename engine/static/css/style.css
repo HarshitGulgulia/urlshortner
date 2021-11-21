@@ -36,6 +36,7 @@
     padding-left: 30px;
     padding-right: 30px;
     outline: none;
+    border-radius: 20px;
 }
 
 #main .short {
@@ -77,6 +78,18 @@
   }
 
 .menu {
-    float: right;
-    padding: 35px;
+    float: center;
+    padding: 50px;
+    
+    
+}
+.logo{
+  float: left;
+  font-style: oblique;
+}
+.pages{
+  float: right;
+}
+.container-fluid{
+  margin-top: 20px;
 }

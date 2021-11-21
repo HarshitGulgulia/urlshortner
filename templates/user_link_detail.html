@@ -2,11 +2,12 @@
 
 {% block content %}
     <div id="wrapper">
-        <p class="menu">
+        <div class=logo><h1>code-HAK</h1></div>
+        <div class="menu">
             <a class="btn btn-primary" href="{% url 'user_links_list' %}">History</a>
             <a class="btn btn-primary" href="{% url 'main' %}">Main</a>
             <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
-        </p>
+        </div>
         <div class="container-fluid" style="padding: 35px;">
             <h3>Link <a href="/{{ url.short_url }}">{{ url.short_url }}</a> clicks statistics for the last 30 days</h3>
             <div class="card" style="width: 100%">
