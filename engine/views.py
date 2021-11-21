@@ -21,6 +21,7 @@ class UserLinkRequiredMixin(LoginRequiredMixin):
             return self.handle_no_permission()
         return super().dispatch(request, *args, **kwargs)
 
+#code for shorting the link
 
 class ShortUrlView(View):
     model = Url
@@ -28,20 +29,20 @@ class ShortUrlView(View):
     @staticmethod
     def generate_link():
         while True:
-            short_url = uuid.uuid4().hex[:8]
-            if not Url.objects.filter(short_url=short_url):
+            short_url = uuid.uuid4().hex[:8]  # specified the length of uudi generated and parsed it in hex
+            if not Url.objects.filter(short_url=short_url):  #checking if the uudi doesn't exist
                 return short_url
 
     def post(self, *args, **kwargs):
         link = self.request.POST.get('link', '')
 
-        validate = URLValidator()
+        validate = URLValidator()  #used django validation package to validate the link passed by user
         try:
             validate(link)
         except ValidationError:
             return HttpResponseBadRequest()
 
-        short_url = self.generate_link()
+        short_url = self.generate_link()  
 
         if self.request.user.is_authenticated:
             self.model.objects.create(user=self.request.user, original_url=link, short_url=short_url)
@@ -55,16 +56,16 @@ class RedirectUrlView(RedirectView):
     permanent = False
 
     def get_redirect_url(self, *args, **kwargs):
-        url = get_object_or_404(Url, short_url=kwargs['url'])
-        Click.objects.create(url=url)
-        self.url = url.original_url
+        url = get_object_or_404(Url, short_url=kwargs['url'])  #Getting the URL object from ORM by comparing url passed by user
+        Click.objects.create(url=url)  # Saving the click count with time stamp
+        self.url = url.original_url  #getting original URL from url object
         return super().get_redirect_url(*args, **kwargs)
 
 
 class UserLinksView(LoginRequiredMixin, ListView):
     model = Url
-    context_object_name = 'urls'
-    template_name = 'user_links_list.html'
+    context_object_name = 'urls'   
+    template_name = 'user_links_list.html'   
 
     def get_queryset(self):
         return self.model.objects.filter(user=self.request.user).order_by('-pk')

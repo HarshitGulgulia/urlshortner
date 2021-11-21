@@ -28,7 +28,7 @@ accounts_urls = [
     ),
     path(
         'register/',
-        CreateView.as_view(
+        CreateView.as_view(     #creating a register view using django inbilt class
             template_name='register.html',
             model=User,
             form_class=RegisterForm,

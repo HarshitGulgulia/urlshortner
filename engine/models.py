@@ -10,7 +10,7 @@ class Url(models.Model):
 
     @property
     def clicks(self):
-        return len(Click.objects.filter(url=self))
+        return len(Click.objects.filter(url=self))  #defined a property for clicks class to count clicks
 
     def __str__(self):
         return 'Link shortened to {}'.format(self.short_url)

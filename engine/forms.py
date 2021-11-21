@@ -18,7 +18,7 @@ class BootstrapMixin:
 class LoginForm(BootstrapMixin, AuthenticationForm):
 
     class Meta:
-        model = User
+        model = User  #django user model
         fields = ('username', 'password')
 
 
