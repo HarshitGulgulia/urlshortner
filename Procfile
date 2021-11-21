@@ -1,1 +1,3 @@
-web: gunicorn urlshorter.wsgi --log-file -
+web: gunicorn urlshorter.wsgi:application --log-file - --log-level debug
+python manage.py collectstatic --noinput
+manage.py migrate
