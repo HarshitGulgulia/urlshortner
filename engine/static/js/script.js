@@ -12,6 +12,7 @@ $(document).ready(function () {
                 csrfmiddlewaretoken: tokens.csrf_token,
             },
             success: function (data) {
+                document.getElementById("newlink").innerHTML = `<p>`+data+`</p>`;
                 window.prompt("Copy to clipboard: Ctrl+C, Enter", data);
             },
             statusCode: {
