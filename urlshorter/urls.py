@@ -53,3 +53,4 @@ urlpatterns = [
     path('<str:url>', RedirectUrlView.as_view()),
 ]
 
+
