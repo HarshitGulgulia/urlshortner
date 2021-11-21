@@ -13,7 +13,7 @@ $(document).ready(function () {
             },
             success: function (data) {
                 document.getElementById("newlink").innerHTML = `<p>`+data+`</p>`;
-                window.prompt("Copy to clipboard: Ctrl+C, Enter", data);
+                // window.prompt("Copy to clipboard: Ctrl+C, Enter", data);
             },
             statusCode: {
                 400: function() {
