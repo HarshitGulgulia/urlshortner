@@ -10,6 +10,4 @@ Web service to shorten links with statistics of clicks in the last 30 days.
    
    ii)python manage.py runserver //This is to run the site locally
 4. A link http://127.0.0.1:8000/ will be generated. ctrl+click on it. The site will open in the browser.
-
-
-#The website is also deployed.You can check it using the following URL- https://urlmakeshorter.herokuapp.com/ 
+ 
